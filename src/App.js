@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Body from './components/Body';
 import Header from './components/Header';
+import ProjectList from './components/ProjectList';
 
 import './App.css';
 
@@ -14,6 +15,7 @@ class App extends Component {
           <p className="App__intro">
             Welcome!
           </p>
+          <ProjectList />
         </Body>
       </div>
     );
