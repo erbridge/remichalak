@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { mount } from 'enzyme';
 
 import Body from './Body';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Body />, div);
+it('mounts without crashing', () => {
+  mount(<Body />);
 });
