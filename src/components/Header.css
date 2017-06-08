@@ -1,0 +1,22 @@
+.Header {
+  background-color: #222;
+  padding: 20px;
+  color: white;
+}
+
+.Header__nav {
+  display: flex;
+  max-width: 800px;
+  margin: auto;
+  justify-content: space-around;
+}
+
+.Header__nav-link {
+  flex: 1;
+  padding: 20px;
+}
+
+.Header__nav-link--home {
+  padding-top: 0;
+  padding-bottom: 40px;
+}
