@@ -1,10 +1,22 @@
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 import './Body.css';
 
-const Body = ({ children }) =>
-  <div className="Body">
-    {children}
-  </div>;
+export class Body extends Component {
+  static propTypes = {
+    children: PropTypes.node,
+  };
+
+  render() {
+    const { children } = this.props;
+
+    return (
+      <div className="Body">
+        {children}
+      </div>
+    );
+  }
+}
 
 export default Body;
