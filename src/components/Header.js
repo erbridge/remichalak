@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { topRoutes } from '../routes';
 
+import ExternalLink from './ExternalLink';
+
 import './Header.css';
 
 const Header = () =>
@@ -11,14 +13,14 @@ const Header = () =>
     <h1>remichalak</h1>
     <h2>artist</h2>
     <div className="Header__nav">
-      {topRoutes.map(({ external, link, name, path }, index) => {
-        const linkWrapper = external
-          ? <a className="Header__nav-link__anchor" href={path} target="_blank">
-              {link}
-            </a>
-          : <Link className="Header__nav-link__anchor" to={path}>
-              {link}
-            </Link>;
+      {topRoutes.map(({ external, link, name, newTab, path }, index) => {
+        const LinkComponent = external ? ExternalLink : Link;
+
+        const extraLinkProps = {};
+
+        if (external) {
+          extraLinkProps.newTab = newTab;
+        }
 
         return (
           <div
@@ -28,7 +30,13 @@ const Header = () =>
               `Header__nav-link--${name}`,
             )}
           >
-            {linkWrapper}
+            <LinkComponent
+              className="Header__nav-link__anchor"
+              to={path}
+              {...extraLinkProps}
+            >
+              {link}
+            </LinkComponent>
           </div>
         );
       })}
