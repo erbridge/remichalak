@@ -1,4 +1,5 @@
 import React from 'react';
+import { matchPath } from 'react-router';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { topRoutes } from './routes';
@@ -10,18 +11,30 @@ import ProjectList from './components/ProjectList';
 
 import './App.css';
 
+const topRoutesWithSections = topRoutes.filter(({ section }) => section);
+
 const App = () =>
   <Router>
     <div className="App">
       <Header />
       <Body>
-        {topRoutes.filter(({ section }) => section).map((route, index) =>
+        {topRoutesWithSections.map((route, index) =>
           <Route
             key={index}
             path={route.path}
             exact={route.exact}
-            children={({ match }) =>
-              <ExpandingSection expand={Boolean(match)}>
+            strict={route.strict}
+            children={({ location, match }) =>
+              <ExpandingSection
+                delayNextAnimation={Boolean(topRoutesWithSections.find(r =>
+                  r.path !== route.path && matchPath(location.pathname, {
+                    path: r.path,
+                    exact: r.exact,
+                    strict: r.strict,
+                  }),
+                ))}
+                expand={Boolean(match)}
+              >
                 <route.section />
               </ExpandingSection>}
           />,
