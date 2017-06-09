@@ -12,16 +12,17 @@ const Header = () =>
     <h2>artist</h2>
     <div className="Header__nav">
       {topRoutes.map(({ link, name, path }, index) =>
-        <Link
+        <div
           key={index}
           className={classnames(
             'Header__nav-link',
             `Header__nav-link--${name}`,
           )}
-          to={path}
         >
-          {link}
-        </Link>,
+          <Link className="Header__nav-link__anchor" to={path}>
+            {link}
+          </Link>
+        </div>,
       )}
     </div>
   </div>;

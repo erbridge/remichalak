@@ -22,3 +22,14 @@
   padding-top: 0;
   padding-bottom: 40px;
 }
+
+.Header__nav-link__anchor {
+  color: white;
+  text-decoration: none;
+}
+
+.Header__nav-link__anchor:active,
+.Header__nav-link__anchor:focus,
+.Header__nav-link__anchor:hover {
+  color: #aaa;
+}
