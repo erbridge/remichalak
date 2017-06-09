@@ -1,4 +1,8 @@
+import classnames from 'classnames';
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import { topRoutes } from '../routes';
 
 import './Header.css';
 
@@ -7,11 +11,18 @@ const Header = () =>
     <h1>remichalak</h1>
     <h2>artist</h2>
     <div className="Header__nav">
-      <div className="Header__nav-link">about</div>
-      <div className="Header__nav-link">blog</div>
-      <div className="Header__nav-link Header__nav-link--home">home</div>
-      <div className="Header__nav-link">shop</div>
-      <div className="Header__nav-link">contact</div>
+      {topRoutes.map(({ link, name, path }, index) =>
+        <Link
+          key={index}
+          className={classnames(
+            'Header__nav-link',
+            `Header__nav-link--${name}`,
+          )}
+          to={path}
+        >
+          {link}
+        </Link>,
+      )}
     </div>
   </div>;
 

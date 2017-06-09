@@ -1,0 +1,9 @@
+.ExpandingSection {
+  height: 0;
+  overflow: hidden;
+  transition: height ease-in-out 250ms;
+}
+
+.ExpandingSection--expanded {
+  height: 200px;
+}
