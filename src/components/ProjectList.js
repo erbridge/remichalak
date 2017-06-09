@@ -11,6 +11,8 @@ const ProjectList = () =>
     <ProjectThumbnail />
     <ProjectThumbnail />
     <ProjectThumbnail />
+    <ProjectThumbnail />
+    <ProjectThumbnail />
   </div>;
 
 export default ProjectList;
