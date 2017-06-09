@@ -11,7 +11,6 @@ export const topRoutes = [
     name: 'blog',
     link: 'blog',
     path: '/blog',
-    section: () => <div>blog</div>,
   },
   {
     name: 'home',

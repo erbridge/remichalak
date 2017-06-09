@@ -15,18 +15,15 @@ const App = () =>
     <div className="App">
       <Header />
       <Body>
-        {topRoutes.map((route, index) =>
+        {topRoutes.filter(({ section }) => section).map((route, index) =>
           <Route
             key={index}
             path={route.path}
             exact={route.exact}
             children={({ match }) =>
-              <div>
-                {route.section &&
-                  <ExpandingSection expand={Boolean(match)}>
-                    <route.section />
-                  </ExpandingSection>}
-              </div>}
+              <ExpandingSection expand={Boolean(match)}>
+                <route.section />
+              </ExpandingSection>}
           />,
         )}
         <ProjectList />
