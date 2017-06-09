@@ -21,8 +21,8 @@ export const topRoutes = [
   {
     name: 'shop',
     link: 'shop',
-    path: '/shop',
-    section: () => <div>shop</div>,
+    path: 'https://society6.com/remichalak',
+    external: true,
   },
   {
     name: 'contact',
