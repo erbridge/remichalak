@@ -1,7 +1,7 @@
 .ExpandingSection {
   position: relative;
   height: 0;
-  padding: 0;
+  padding: 0 10px;
   overflow: hidden;
   transition: height 250ms ease-in-out, padding 250ms ease-in-out;
 }
