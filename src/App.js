@@ -8,9 +8,10 @@ import { topRoutes } from './routes';
 import Body from './components/Body';
 import ExpandingSection from './components/ExpandingSection';
 import Header from './components/Header';
+import MarkdownComponent from './components/MarkdownComponent';
 import ProjectList from './components/ProjectList';
 
-const topRoutesWithSections = topRoutes.filter(({ section }) => section);
+const topRoutesWithContent = topRoutes.filter(({ content }) => content);
 
 const App = () =>
   <Router>
@@ -29,7 +30,7 @@ const App = () =>
       )}
       <Header />
       <Body>
-        {topRoutesWithSections.map((route, index) =>
+        {topRoutesWithContent.map((route, index) =>
           <Route
             key={index}
             path={route.path}
@@ -38,7 +39,7 @@ const App = () =>
             children={({ location, match }) =>
               <ExpandingSection
                 delayNextAnimation={Boolean(
-                  topRoutesWithSections.find(
+                  topRoutesWithContent.find(
                     r =>
                       r.path !== route.path &&
                       matchPath(location.pathname, {
@@ -50,7 +51,7 @@ const App = () =>
                 )}
                 expand={Boolean(match)}
               >
-                <route.section />
+                <MarkdownComponent content={route.content} />
               </ExpandingSection>}
           />,
         )}

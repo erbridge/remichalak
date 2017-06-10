@@ -1,19 +1,12 @@
-import { Parser } from 'html-to-react';
-import React from 'react';
-
-import rawAboutSection from '../pages/about.md';
-
-const htmlParser = new Parser();
-
-const aboutSection = htmlParser.parse(rawAboutSection.__content);
+import about from '../pages/about.md';
 
 export const topRoutes = [
   {
     name: 'about',
     link: 'about',
     path: '/about',
-    title: rawAboutSection.title,
-    section: () => <div>{aboutSection}</div>,
+    title: about.title,
+    content: about.__content,
   },
   {
     name: 'blog',
@@ -37,6 +30,6 @@ export const topRoutes = [
     name: 'contact',
     link: 'contact',
     path: '/contact',
-    section: () => <div>contact</div>,
+    content: '<div>contact</div>',
   },
 ];
