@@ -9,8 +9,6 @@ import ExpandingSection from './components/ExpandingSection';
 import Header from './components/Header';
 import ProjectList from './components/ProjectList';
 
-import './App.css';
-
 const topRoutesWithSections = topRoutes.filter(({ section }) => section);
 
 const App = () =>
