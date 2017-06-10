@@ -1,11 +1,19 @@
+import { Parser } from 'html-to-react';
 import React from 'react';
+
+import rawAboutSection from '../pages/about.md';
+
+const htmlParser = new Parser();
+
+const aboutSection = htmlParser.parse(rawAboutSection.__content);
 
 export const topRoutes = [
   {
     name: 'about',
     link: 'about',
     path: '/about',
-    section: () => <div>about</div>,
+    title: rawAboutSection.title,
+    section: () => <div>{aboutSection}</div>,
   },
   {
     name: 'blog',
