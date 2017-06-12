@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 import ExternalLink from './ExternalLink';
 
+import './MarkdownComponent.css';
+
 const htmlParser = new Parser();
 
 const processNodeDefinitions = new ProcessNodeDefinitions(React);
