@@ -1,14 +1,14 @@
 .ExpandingSection {
   display: flex;
-  height: 0;
+  max-height: 0;
   padding: 0 10px;
   overflow: hidden;
   flex-direction: column;
-  transition: height 250ms ease-in-out, padding 250ms ease-in-out;
+  transition: max-height 250ms, padding 250ms;
 }
 
 .ExpandingSection--expanded {
-  height: 200px;
+  max-height: 300px;
   padding: 10px;
 }
 

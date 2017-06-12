@@ -1,16 +1,19 @@
 .FadingSection {
   display: flex;
   opacity: 0;
-  height: 0;
+  visibility: collapse;
+  max-height: 0;
   padding: 0;
-  transition: height 250ms ease-in-out,
-    padding 250ms ease-in-out,
-    opacity 250ms ease-in-out;
+  transition: max-height 250ms,
+    padding 250ms,
+    opacity 250ms,
+    visibility 250ms;
 }
 
 .FadingSection--visible {
   opacity: 1;
-  height: 100%;
+  visibility: visible;
+  max-height: 100%;
   padding: 10px 0;
 }
 
