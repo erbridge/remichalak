@@ -33,6 +33,7 @@ export const topRoutes = [
     link: 'home',
     path: '/',
     exact: true,
+    navExact: true,
   },
   {
     name: 'shop',

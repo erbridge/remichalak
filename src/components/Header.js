@@ -14,7 +14,10 @@ const Header = () =>
     <h2>artist</h2>
     <div className="Header__nav">
       {topRoutes.map(
-        ({ exact, external, link, name, newTab, path, strict }, index) => {
+        (
+          { exact, external, link, name, navExact, newTab, path, strict },
+          index,
+        ) => {
           const LinkComponent = external ? ExternalLink : NavLink;
 
           const extraLinkProps = {};
@@ -23,7 +26,7 @@ const Header = () =>
             extraLinkProps.newTab = newTab;
           } else {
             extraLinkProps.activeClassName = 'Header__nav-link__anchor--active';
-            extraLinkProps.exact = exact;
+            extraLinkProps.exact = exact && navExact;
             extraLinkProps.strict = strict;
           }
 
