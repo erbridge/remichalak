@@ -28,6 +28,7 @@
   text-decoration: none;
 }
 
+.Header__nav-link__anchor--active,
 .Header__nav-link__anchor:active,
 .Header__nav-link__anchor:focus,
 .Header__nav-link__anchor:hover {
