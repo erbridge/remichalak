@@ -8,7 +8,7 @@ import { topRoutes } from './routes';
 import Body from './components/Body';
 import ExpandingSection from './components/ExpandingSection';
 import Header from './components/Header';
-import MarkdownComponent from './components/MarkdownComponent';
+import MarkdownPage from './components/MarkdownPage';
 import ProjectList from './components/ProjectList';
 
 const topRoutesWithContent = topRoutes.filter(({ content }) => content);
@@ -51,7 +51,7 @@ const App = () =>
                 )}
                 expand={Boolean(match)}
               >
-                <MarkdownComponent content={route.content} />
+                <MarkdownPage content={route.content} />
               </ExpandingSection>}
           />,
         )}

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import ExternalLink from './ExternalLink';
 
-import './MarkdownComponent.css';
+import './MarkdownPage.css';
 
 const htmlParser = new Parser();
 
@@ -37,7 +37,7 @@ const processingInstructions = [
   },
 ];
 
-class MarkdownComponent extends Component {
+class MarkdownPage extends Component {
   static propTypes = {
     content: PropTypes.string.isRequired,
   };
@@ -47,7 +47,7 @@ class MarkdownComponent extends Component {
 
     // TODO: Only parse when the content changes.
     return (
-      <div className="MarkdownComponent">
+      <div className="MarkdownPage">
         {htmlParser.parseWithInstructions(
           content,
           () => true,
@@ -58,4 +58,4 @@ class MarkdownComponent extends Component {
   }
 }
 
-export default MarkdownComponent;
+export default MarkdownPage;
