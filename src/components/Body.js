@@ -13,7 +13,9 @@ export class Body extends Component {
 
     return (
       <div className="Body">
-        {children}
+        <div className="Body__content">
+          {children}
+        </div>
       </div>
     );
   }

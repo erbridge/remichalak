@@ -1,16 +1,19 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { matchPath } from 'react-router';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import routes, { blogRoutes, topRoutes } from './routes';
+import routes, { mainRoutes, topRoutes } from './routes';
 
 import Body from './components/Body';
 import ExpandingSection from './components/ExpandingSection';
+import FadingSection from './components/FadingSection';
 import Header from './components/Header';
 import IndexPage from './components/IndexPage';
 import MarkdownPage from './components/MarkdownPage';
 import ProjectList from './components/ProjectList';
+
+import './App.css';
 
 const topRoutesWithContentOrSubroutes = topRoutes.filter(
   ({ content, routes }) => content || (routes && routes.length),
@@ -42,7 +45,7 @@ const App = () =>
             children={({ location, match }) =>
               <ExpandingSection
                 delayNextAnimation={Boolean(
-                  topRoutesWithContentOrSubroutes.find(
+                  topRoutesWithContentOrSubroutes.concat(mainRoutes).find(
                     r =>
                       r.path !== route.path &&
                       matchPath(location.pathname, {
@@ -61,18 +64,53 @@ const App = () =>
               </ExpandingSection>}
           />,
         )}
-        <Switch>
-          {blogRoutes.map((route, index) =>
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              strict={route.strict}
-              render={() => <MarkdownPage content={route.content} />}
-            />,
-          )}
-          <Route render={() => <ProjectList />} />
-        </Switch>
+        {mainRoutes.map((route, index) =>
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            strict={route.strict}
+            children={({ location, match }) =>
+              <FadingSection
+                delayNextAnimation={Boolean(
+                  routes.find(
+                    r =>
+                      r.path !== route.path &&
+                      matchPath(location.pathname, {
+                        path: r.path,
+                        exact: r.exact,
+                        strict: r.strict,
+                      }),
+                  ),
+                )}
+                visible={Boolean(match)}
+              >
+                <MarkdownPage content={route.content} />
+              </FadingSection>}
+          />,
+        )}
+        <Route
+          children={({ location, match }) => {
+            const isOveridden = Boolean(
+              mainRoutes.find(route =>
+                matchPath(location.pathname, {
+                  path: route.path,
+                  exact: route.exact,
+                  strict: route.strict,
+                }),
+              ),
+            );
+
+            return (
+              <FadingSection
+                delayNextAnimation={isOveridden}
+                visible={!isOveridden}
+              >
+                <ProjectList />
+              </FadingSection>
+            );
+          }}
+        />
       </Body>
     </div>
   </Router>;

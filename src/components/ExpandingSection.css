@@ -1,6 +1,5 @@
 .ExpandingSection {
   display: flex;
-  position: relative;
   height: 0;
   padding: 0 10px;
   overflow: hidden;

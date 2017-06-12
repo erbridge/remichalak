@@ -1,0 +1,23 @@
+.FadingSection {
+  display: flex;
+  opacity: 0;
+  height: 0;
+  padding: 0;
+  transition: height 250ms ease-in-out,
+    padding 250ms ease-in-out,
+    opacity 250ms ease-in-out;
+}
+
+.FadingSection--visible {
+  opacity: 1;
+  height: 100%;
+  padding: 10px 0;
+}
+
+.FadingSection--visible--delayed {
+  transition-delay: 500ms;
+}
+
+.FadingSection__content {
+  flex: 1;
+}
