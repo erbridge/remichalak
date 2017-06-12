@@ -1,22 +1,25 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { matchPath } from 'react-router';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { topRoutes } from './routes';
+import routes, { blogRoutes, topRoutes } from './routes';
 
 import Body from './components/Body';
 import ExpandingSection from './components/ExpandingSection';
 import Header from './components/Header';
+import IndexPage from './components/IndexPage';
 import MarkdownPage from './components/MarkdownPage';
 import ProjectList from './components/ProjectList';
 
-const topRoutesWithContent = topRoutes.filter(({ content }) => content);
+const topRoutesWithContentOrSubroutes = topRoutes.filter(
+  ({ content, routes }) => content || (routes && routes.length),
+);
 
 const App = () =>
   <Router>
     <div className="App">
-      {topRoutes.map((route, index) =>
+      {routes.map((route, index) =>
         <Route
           key={index}
           path={route.path}
@@ -30,7 +33,7 @@ const App = () =>
       )}
       <Header />
       <Body>
-        {topRoutesWithContent.map((route, index) =>
+        {topRoutesWithContentOrSubroutes.map((route, index) =>
           <Route
             key={index}
             path={route.path}
@@ -39,7 +42,7 @@ const App = () =>
             children={({ location, match }) =>
               <ExpandingSection
                 delayNextAnimation={Boolean(
-                  topRoutesWithContent.find(
+                  topRoutesWithContentOrSubroutes.find(
                     r =>
                       r.path !== route.path &&
                       matchPath(location.pathname, {
@@ -51,11 +54,25 @@ const App = () =>
                 )}
                 expand={Boolean(match)}
               >
-                <MarkdownPage content={route.content} />
+                {route.content && <MarkdownPage content={route.content} />}
+                {route.routes &&
+                  route.routes.length &&
+                  <IndexPage routes={route.routes} />}
               </ExpandingSection>}
           />,
         )}
-        <ProjectList />
+        <Switch>
+          {blogRoutes.map((route, index) =>
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              strict={route.strict}
+              render={() => <MarkdownPage content={route.content} />}
+            />,
+          )}
+          <Route render={() => <ProjectList />} />
+        </Switch>
       </Body>
     </div>
   </Router>;

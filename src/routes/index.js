@@ -1,4 +1,15 @@
 import about from '../pages/about.md';
+import blog from '../pages/blog.md';
+import contact from '../pages/contact.md';
+
+import posts from '../posts';
+
+export const blogRoutes = posts.map(({ __content, slug, title }) => ({
+  path: `/blog/${encodeURI((slug || title).replace(/\s/g, '-'))}`,
+  exact: true,
+  title,
+  content: __content,
+}));
 
 export const topRoutes = [
   {
@@ -12,6 +23,10 @@ export const topRoutes = [
     name: 'blog',
     link: 'blog',
     path: '/blog',
+    exact: true,
+    title: blog.title,
+    content: blog.__content,
+    routes: blogRoutes,
   },
   {
     name: 'home',
@@ -30,6 +45,9 @@ export const topRoutes = [
     name: 'contact',
     link: 'contact',
     path: '/contact',
-    content: '<div>contact</div>',
+    title: contact.title,
+    content: contact.__content,
   },
 ];
+
+export default topRoutes.concat(blogRoutes);
