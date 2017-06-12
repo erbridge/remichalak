@@ -1,8 +1,10 @@
 .ExpandingSection {
+  display: flex;
   position: relative;
   height: 0;
   padding: 0 10px;
   overflow: hidden;
+  flex-direction: column;
   transition: height 250ms ease-in-out, padding 250ms ease-in-out;
 }
 
@@ -15,10 +17,21 @@
   transition-delay: 500ms;
 }
 
+.ExpandingSection__content {
+  flex: 1;
+  overflow: auto;
+}
+
+.ExpandingSection__footer {
+  display: flex;
+  padding-top: 5px;
+}
+
+.ExpandingSection__spacer {
+  flex: 1;
+}
+
 .ExpandingSection__close {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
   font-size: 24px;
   color: #222;
   text-decoration: none;

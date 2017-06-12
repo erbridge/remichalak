@@ -33,8 +33,13 @@ export class ExpandingSection extends Component {
           'ExpandingSection--expanded--delayed': expand && delayAnimation,
         })}
       >
-        {children}
-        <Link className="ExpandingSection__close" to="/">×</Link>
+        <div className="ExpandingSection__content">
+          {children}
+        </div>
+        <div className="ExpandingSection__footer">
+          <div className="ExpandingSection__spacer" />
+          <Link className="ExpandingSection__close" to="/">×</Link>
+        </div>
       </div>
     );
   }
