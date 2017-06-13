@@ -1,39 +1,36 @@
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 import './ProjectThumbnail.css';
 
-const ProjectThumbnail = () =>
-  <div className="ProjectThumbnail">
-    <div className="ProjectThumbnail__preview">
-      <img
-        className="ProjectThumbnail__image"
-        src="https://placebear.com/g/1920/1080"
-        alt=""
-      />
-    </div>
-    <div className="ProjectThumbnail__previews">
-      <div className="ProjectThumbnail__preview">
-        <img
-          className="ProjectThumbnail__image"
-          src="https://placebear.com/g/1920/1080"
-          alt=""
-        />
+class ProjectThumbnail extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string),
+  };
+
+  renderPreview(src, index) {
+    const { title } = this.props;
+
+    return (
+      <div key={index} className="ProjectThumbnail__preview">
+        <img className="ProjectThumbnail__image" src={src} alt={title} />
       </div>
-      <div className="ProjectThumbnail__preview">
-        <img
-          className="ProjectThumbnail__image"
-          src="https://placebear.com/g/1920/1080"
-          alt=""
-        />
+    );
+  }
+
+  render() {
+    const { images: [mainImage, ...images] } = this.props;
+
+    return (
+      <div className="ProjectThumbnail">
+        {this.renderPreview(mainImage)}
+        <div className="ProjectThumbnail__previews">
+          {images.map((src, index) => this.renderPreview(src, index))}
+        </div>
       </div>
-      <div className="ProjectThumbnail__preview">
-        <img
-          className="ProjectThumbnail__image"
-          src="https://placebear.com/g/1920/1080"
-          alt=""
-        />
-      </div>
-    </div>
-  </div>;
+    );
+  }
+}
 
 export default ProjectThumbnail;

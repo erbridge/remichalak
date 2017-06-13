@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { matchPath } from 'react-router';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import routes, { mainRoutes, topRoutes } from './routes';
+import routes, { mainRoutes, projectRoutes, topRoutes } from './routes';
 
 import Body from './components/Body';
 import ExpandingSection from './components/ExpandingSection';
@@ -106,7 +106,7 @@ const App = () =>
                 delayNextAnimation={isOveridden}
                 visible={!isOveridden}
               >
-                <ProjectList />
+                <ProjectList projects={projectRoutes} />
               </FadingSection>
             );
           }}

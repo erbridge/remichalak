@@ -2,7 +2,10 @@ import about from '../pages/about.md';
 import blog from '../pages/blog.md';
 import contact from '../pages/contact.md';
 
+import assets from '../assets';
+
 import posts from '../posts';
+import projects from '../projects';
 
 export const blogRoutes = posts.map(({ __content, slug, title }) => ({
   path: `/blog/${encodeURI((slug || title).replace(/\s/g, '-'))}`,
@@ -10,6 +13,16 @@ export const blogRoutes = posts.map(({ __content, slug, title }) => ({
   title,
   content: __content,
 }));
+
+export const projectRoutes = projects.map(
+  ({ __content, images, slug, title }) => ({
+    path: `/projects/${encodeURI((slug || title).replace(/\s/g, '-'))}`,
+    exact: true,
+    images: images.map(image => assets[image]),
+    title,
+    content: __content,
+  }),
+);
 
 export const topRoutes = [
   {
@@ -51,6 +64,6 @@ export const topRoutes = [
   },
 ];
 
-export const mainRoutes = blogRoutes;
+export const mainRoutes = [...blogRoutes, ...projectRoutes];
 
 export default [...topRoutes, ...mainRoutes];
