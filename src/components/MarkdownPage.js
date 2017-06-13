@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import assets from '../assets';
 
 import ExternalLink from './ExternalLink';
+import ViewableImage from './ViewableImage';
 
 import './MarkdownPage.css';
 
@@ -34,17 +35,12 @@ const processingInstructions = [
   {
     shouldProcessNode(node) {
       return (
-        node.type &&
-        node.type === 'tag' &&
-        node.name &&
-        node.name === 'img' &&
-        node.attribs.src &&
-        node.attribs.src.startsWith('/')
+        node.type && node.type === 'tag' && node.name && node.name === 'img'
       );
     },
     processNode(node, children, index) {
       return (
-        <img
+        <ViewableImage
           key={index}
           src={assets[node.attribs.src] || node.attribs.src}
           alt={node.attribs.alt || ''}

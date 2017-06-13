@@ -86,7 +86,8 @@ class ProjectPage extends Component {
           images={images.map(src => ({ src }))}
           currentImage={currentLightboxImageIndex}
           isOpen={lightboxIsOpen}
-          showThumbnails
+          showThumbnails={images.length > 1}
+          showImageCount={images.length > 1}
           onClickNext={() => this.goToNextLightboxImage()}
           onClickPrev={() => this.goToPreviousLightboxImage()}
           onClickThumbnail={index => this.goToLightboxImage(index)}
