@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import assets from '../assets';
+
 import ExternalLink from './ExternalLink';
 
 import './MarkdownPage.css';
@@ -26,6 +28,27 @@ const processingInstructions = [
         <LinkComponent key={index} to={node.attribs.href}>
           {children}
         </LinkComponent>
+      );
+    },
+  },
+  {
+    shouldProcessNode(node) {
+      return (
+        node.type &&
+        node.type === 'tag' &&
+        node.name &&
+        node.name === 'img' &&
+        node.attribs.src &&
+        node.attribs.src.startsWith('/')
+      );
+    },
+    processNode(node, children, index) {
+      return (
+        <img
+          key={index}
+          src={assets[node.attribs.src] || node.attribs.src}
+          alt={node.attribs.alt || ''}
+        />
       );
     },
   },
