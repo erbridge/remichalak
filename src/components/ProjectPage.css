@@ -1,0 +1,9 @@
+.ProjectPage__images {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ProjectPage__image {
+  display: block;
+  max-width: 25%;
+}

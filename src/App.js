@@ -3,7 +3,12 @@ import { Helmet } from 'react-helmet';
 import { matchPath } from 'react-router';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import routes, { mainRoutes, projectRoutes, topRoutes } from './routes';
+import routes, {
+  blogRoutes,
+  mainRoutes,
+  projectRoutes,
+  topRoutes,
+} from './routes';
 
 import Body from './components/Body';
 import ExpandingSection from './components/ExpandingSection';
@@ -11,6 +16,7 @@ import FadingSection from './components/FadingSection';
 import Header from './components/Header';
 import IndexPage from './components/IndexPage';
 import MarkdownPage from './components/MarkdownPage';
+import ProjectPage from './components/ProjectPage';
 import ProjectList from './components/ProjectList';
 
 import './App.css';
@@ -64,7 +70,7 @@ const App = () =>
               </ExpandingSection>}
           />,
         )}
-        {mainRoutes.map((route, index) =>
+        {blogRoutes.map((route, index) =>
           <Route
             key={index}
             path={route.path}
@@ -86,6 +92,35 @@ const App = () =>
                 visible={Boolean(match)}
               >
                 <MarkdownPage content={route.content} />
+              </FadingSection>}
+          />,
+        )}
+        {projectRoutes.map((route, index) =>
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            strict={route.strict}
+            children={({ location, match }) =>
+              <FadingSection
+                delayNextAnimation={Boolean(
+                  routes.find(
+                    r =>
+                      r.path !== route.path &&
+                      matchPath(location.pathname, {
+                        path: r.path,
+                        exact: r.exact,
+                        strict: r.strict,
+                      }),
+                  ),
+                )}
+                visible={Boolean(match)}
+              >
+                <ProjectPage
+                  content={route.content}
+                  images={route.images || []}
+                  title={route.title}
+                />
               </FadingSection>}
           />,
         )}
