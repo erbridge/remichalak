@@ -13,7 +13,7 @@ class ProjectList extends Component {
         path: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
       }),
-    ),
+    ).isRequired,
   };
 
   render() {
@@ -24,9 +24,9 @@ class ProjectList extends Component {
         {projects.map(({ images, path, title }, index) =>
           <ProjectThumbnail
             key={index}
-            images={images}
-            path={path}
+            images={images || []}
             title={title}
+            linkTo={path}
           />,
         )}
       </div>

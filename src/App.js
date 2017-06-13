@@ -106,7 +106,7 @@ const App = () =>
                 delayNextAnimation={isOveridden}
                 visible={!isOveridden}
               >
-                <ProjectList projects={projectRoutes} />
+                <ProjectList projects={projectRoutes || []} />
               </FadingSection>
             );
           }}

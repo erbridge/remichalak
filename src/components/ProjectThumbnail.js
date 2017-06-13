@@ -6,8 +6,8 @@ import './ProjectThumbnail.css';
 
 class ProjectThumbnail extends Component {
   static propTypes = {
-    images: PropTypes.arrayOf(PropTypes.string),
-    path: PropTypes.string.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    linkTo: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   };
 
@@ -22,13 +22,19 @@ class ProjectThumbnail extends Component {
   }
 
   render() {
-    const { images: [mainImage, ...images], path } = this.props;
+    const { images, linkTo, title } = this.props;
+
+    if (!images.length) {
+      return <Link className="ProjectThumbnail" to={linkTo}>{title}</Link>;
+    }
+
+    const [mainImage, ...otherImages] = images;
 
     return (
-      <Link className="ProjectThumbnail" to={path}>
+      <Link className="ProjectThumbnail" to={linkTo}>
         {this.renderPreview(mainImage)}
         <div className="ProjectThumbnail__previews">
-          {images.map((src, index) => this.renderPreview(src, index))}
+          {otherImages.map((src, index) => this.renderPreview(src, index))}
         </div>
       </Link>
     );

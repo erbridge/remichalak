@@ -1,8 +1,13 @@
-import React from 'react';
 import { mount } from 'enzyme';
+import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 
 import ProjectThumbnail from './ProjectThumbnail';
 
 it('mounts without crashing', () => {
-  mount(<ProjectThumbnail />);
+  mount(
+    <MemoryRouter>
+      <ProjectThumbnail images={[]} linkTo="/test" title="test" />
+    </MemoryRouter>,
+  );
 });
