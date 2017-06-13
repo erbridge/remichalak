@@ -6,4 +6,5 @@
 .ProjectPage__image {
   display: block;
   max-width: 25%;
+  cursor: pointer;
 }
