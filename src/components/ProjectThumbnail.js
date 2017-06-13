@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import './ProjectThumbnail.css';
 
 class ProjectThumbnail extends Component {
   static propTypes = {
-    title: PropTypes.string.isRequired,
     images: PropTypes.arrayOf(PropTypes.string),
+    path: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
   };
 
   renderPreview(src, index) {
@@ -20,15 +22,15 @@ class ProjectThumbnail extends Component {
   }
 
   render() {
-    const { images: [mainImage, ...images] } = this.props;
+    const { images: [mainImage, ...images], path } = this.props;
 
     return (
-      <div className="ProjectThumbnail">
+      <Link className="ProjectThumbnail" to={path}>
         {this.renderPreview(mainImage)}
         <div className="ProjectThumbnail__previews">
           {images.map((src, index) => this.renderPreview(src, index))}
         </div>
-      </div>
+      </Link>
     );
   }
 }
