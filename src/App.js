@@ -45,7 +45,7 @@ const App = () =>
             children={({ location, match }) =>
               <ExpandingSection
                 delayNextAnimation={Boolean(
-                  topRoutesWithContentOrSubroutes.concat(mainRoutes).find(
+                  [...topRoutesWithContentOrSubroutes, ...mainRoutes].find(
                     r =>
                       r.path !== route.path &&
                       matchPath(location.pathname, {

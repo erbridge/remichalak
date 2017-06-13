@@ -53,4 +53,4 @@ export const topRoutes = [
 
 export const mainRoutes = blogRoutes;
 
-export default topRoutes.concat(mainRoutes);
+export default [...topRoutes, ...mainRoutes];
