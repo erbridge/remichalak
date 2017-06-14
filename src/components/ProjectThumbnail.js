@@ -7,7 +7,13 @@ import './ProjectThumbnail.css';
 
 class ProjectThumbnail extends Component {
   static propTypes = {
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    images: PropTypes.arrayOf(
+      PropTypes.shape({
+        alt: PropTypes.string.isRequired,
+        caption: PropTypes.string.isRequired,
+        src: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
     title: PropTypes.string.isRequired,
   };
 
@@ -62,16 +68,18 @@ class ProjectThumbnail extends Component {
     this.setState({ currentLightboxImageIndex: index });
   }
 
-  renderPreview(src, index) {
-    const { title } = this.props;
-
+  renderPreview({ alt, src }, index) {
     return (
       <div
         key={index}
         className="ProjectThumbnail__preview"
         onClick={() => this.openLightbox(index)}
       >
-        <img className="ProjectThumbnail__image" src={src} alt={title} />
+        <img
+          className="ProjectThumbnail__image"
+          src={src}
+          alt={alt}
+        />
       </div>
     );
   }
@@ -89,11 +97,13 @@ class ProjectThumbnail extends Component {
     return [
       this.renderPreview(mainImage, 0),
       <div key="previews" className="ProjectThumbnail__previews">
-        {otherImages.map((src, index) => this.renderPreview(src, index + 1))}
+        {otherImages.map((image, index) =>
+          this.renderPreview(image, index + 1),
+        )}
       </div>,
       <Lightbox
         key="lightbox"
-        images={images.map(src => ({ src }))}
+        images={images}
         currentImage={currentLightboxImageIndex}
         isOpen={lightboxIsOpen}
         showThumbnails={images.length > 1}

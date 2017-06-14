@@ -1,6 +1,10 @@
 title: example project 1
 images:
-  - /assets/example.jpg
-  - /assets/example.jpg
-  - /assets/example.jpg
+  - src: /assets/example.jpg
+    caption: example
+  - src: /assets/example.jpg
+    alt: bear
+  - src: /assets/example.jpg
+    caption: example bear
+    alt: bear
   - /assets/example.jpg

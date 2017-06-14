@@ -9,7 +9,13 @@ class ProjectList extends Component {
   static propTypes = {
     projects: PropTypes.arrayOf(
       PropTypes.shape({
-        images: PropTypes.arrayOf(PropTypes.string),
+        images: PropTypes.arrayOf(
+          PropTypes.shape({
+            alt: PropTypes.string.isRequired,
+            caption: PropTypes.string.isRequired,
+            src: PropTypes.string.isRequired,
+          }),
+        ),
         title: PropTypes.string.isRequired,
       }),
     ).isRequired,
@@ -21,11 +27,7 @@ class ProjectList extends Component {
     return (
       <div className="ProjectList">
         {projects.map(({ images, path, title }, index) =>
-          <ProjectThumbnail
-            key={index}
-            images={images || []}
-            title={title}
-          />,
+          <ProjectThumbnail key={index} images={images || []} title={title} />,
         )}
       </div>
     );
