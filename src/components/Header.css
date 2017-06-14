@@ -1,15 +1,19 @@
 .Header {
   background-color: #222;
+  color: white;
+}
+
+.Header__content {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
   padding: 20px;
   text-align: center;
-  color: white;
 }
 
 .Header__nav {
   display: flex;
   width: 100%;
-  max-width: 800px;
-  margin: auto;
   justify-content: space-around;
 }
 
