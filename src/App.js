@@ -3,12 +3,8 @@ import { Helmet } from 'react-helmet';
 import { matchPath } from 'react-router';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import routes, {
-  blogRoutes,
-  mainRoutes,
-  projectRoutes,
-  topRoutes,
-} from './routes';
+import projects from './projects';
+import routes, { mainRoutes, topRoutes } from './routes';
 
 import Body from './components/Body';
 import ExpandingSection from './components/ExpandingSection';
@@ -16,7 +12,6 @@ import FadingSection from './components/FadingSection';
 import Header from './components/Header';
 import IndexPage from './components/IndexPage';
 import MarkdownPage from './components/MarkdownPage';
-import ProjectPage from './components/ProjectPage';
 import ProjectList from './components/ProjectList';
 
 import './App.css';
@@ -70,7 +65,7 @@ const App = () =>
               </ExpandingSection>}
           />,
         )}
-        {blogRoutes.map((route, index) =>
+        {mainRoutes.map((route, index) =>
           <Route
             key={index}
             path={route.path}
@@ -95,35 +90,6 @@ const App = () =>
               </FadingSection>}
           />,
         )}
-        {projectRoutes.map((route, index) =>
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            strict={route.strict}
-            children={({ location, match }) =>
-              <FadingSection
-                delayNextAnimation={Boolean(
-                  routes.find(
-                    r =>
-                      r.path !== route.path &&
-                      matchPath(location.pathname, {
-                        path: r.path,
-                        exact: r.exact,
-                        strict: r.strict,
-                      }),
-                  ),
-                )}
-                visible={Boolean(match)}
-              >
-                <ProjectPage
-                  content={route.content}
-                  images={route.images || []}
-                  title={route.title}
-                />
-              </FadingSection>}
-          />,
-        )}
         <Route
           children={({ location, match }) => {
             const isOveridden = Boolean(
@@ -141,7 +107,7 @@ const App = () =>
                 delayNextAnimation={isOveridden}
                 visible={!isOveridden}
               >
-                <ProjectList projects={projectRoutes || []} />
+                <ProjectList projects={projects || []} />
               </FadingSection>
             );
           }}

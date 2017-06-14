@@ -10,7 +10,6 @@ class ProjectList extends Component {
     projects: PropTypes.arrayOf(
       PropTypes.shape({
         images: PropTypes.arrayOf(PropTypes.string),
-        path: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
       }),
     ).isRequired,
@@ -26,7 +25,6 @@ class ProjectList extends Component {
             key={index}
             images={images || []}
             title={title}
-            linkTo={path}
           />,
         )}
       </div>

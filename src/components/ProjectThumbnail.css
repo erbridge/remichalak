@@ -11,9 +11,14 @@
 
 .ProjectThumbnail__preview {
   flex: 1;
+  cursor: pointer;
 }
 
 .ProjectThumbnail__image {
   display: block;
   max-width: 100%;
+}
+
+.ProjectThumbnail__title {
+  text-align: center;
 }
