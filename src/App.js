@@ -9,6 +9,7 @@ import routes, { mainRoutes, topRoutes } from './routes';
 import Body from './components/Body';
 import ExpandingSection from './components/ExpandingSection';
 import FadingSection from './components/FadingSection';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import IndexPage from './components/IndexPage';
 import MarkdownPage from './components/MarkdownPage';
@@ -113,6 +114,7 @@ const App = () =>
           }}
         />
       </Body>
+      <Footer />
     </div>
   </Router>;
 
