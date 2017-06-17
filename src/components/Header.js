@@ -12,7 +12,6 @@ const Header = () =>
   <div className="Header">
     <div className="Header__content">
       <h1>remichalak</h1>
-      <h2>artist</h2>
       <div className="Header__nav">
         {topRoutes.map(
           (

@@ -1,13 +1,8 @@
-.Footer {
-  background-color: #222;
-  color: white;
-}
-
 .Footer__content {
   width: 100%;
   max-width: 800px;
   margin: auto;
-  padding: 10px 20px;
+  padding: 20px;
 }
 
 .Footer__credit {
