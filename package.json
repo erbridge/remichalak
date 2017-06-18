@@ -5,6 +5,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "html-to-react": "^1.2.9",
+    "object-fit-images": "^3.2.3",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -43,6 +44,7 @@
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.0.0",
     "postcss-loader": "2.0.5",
+    "postcss-object-fit-images": "^1.1.2",
     "promise": "7.1.1",
     "react-dev-utils": "^3.0.0",
     "react-error-overlay": "^1.0.7",
