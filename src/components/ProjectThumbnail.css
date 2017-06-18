@@ -29,16 +29,18 @@
 .ProjectThumbnail__previews {
   display: flex;
   width: 100%;
+  overflow: hidden;
 }
 
 .ProjectThumbnail__preview {
   flex: 1;
+  min-width: 33.333333%;
+  min-width: calc(100% / 3);
   cursor: pointer;
 }
 
 .ProjectThumbnail__image {
   display: block;
-  max-width: 100%;
 }
 
 .ProjectThumbnail__title {
