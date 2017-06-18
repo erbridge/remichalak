@@ -13,11 +13,11 @@ const projects = projectsContext
 
       if (typeof image === 'string') {
         alt = title;
-        src = assets[image];
+        src = image.startsWith('/') ? assets[image] : image;
       } else {
         caption = image.caption || '';
         alt = image.alt || caption || title;
-        src = assets[image.src];
+        src = image.src.startsWith('/') ? assets[image.src] : image.src;
       }
 
       return { alt, caption, src };
