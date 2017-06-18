@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import projects from './projects';
 import routes, { mainRoutes, topRoutes } from './routes';
 
+import ScrollToTop from './components/ScrollToTop';
 import Body from './components/Body';
 import ExpandingSection from './components/ExpandingSection';
 import FadingSection from './components/FadingSection';
@@ -14,7 +15,6 @@ import Header from './components/Header';
 import IndexPage from './components/IndexPage';
 import MarkdownPage from './components/MarkdownPage';
 import ProjectList from './components/ProjectList';
-import ScrollToTop from './components/ScrollToTop';
 
 import './App.css';
 
@@ -25,7 +25,6 @@ const topRoutesWithContentOrSubroutes = topRoutes.filter(
 const App = () =>
   <Router>
     <div className="App">
-      <ScrollToTop />
       {routes.map((route, index) =>
         <Route
           key={index}
@@ -117,6 +116,7 @@ const App = () =>
         />
       </Body>
       <Footer />
+      <ScrollToTop />
     </div>
   </Router>;
 
