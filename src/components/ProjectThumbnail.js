@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
@@ -72,14 +73,12 @@ class ProjectThumbnail extends Component {
     return (
       <div
         key={index}
-        className="ProjectThumbnail__preview"
+        className={classnames('ProjectThumbnail__preview', {
+          'ProjectThumbnail__preview--main': !index,
+        })}
         onClick={() => this.openLightbox(index)}
       >
-        <img
-          className="ProjectThumbnail__image"
-          src={src}
-          alt={alt}
-        />
+        <img className="ProjectThumbnail__image" src={src} alt={alt} />
       </div>
     );
   }
@@ -94,26 +93,27 @@ class ProjectThumbnail extends Component {
 
     const [mainImage, ...otherImages] = images;
 
-    return [
-      this.renderPreview(mainImage, 0),
-      <div key="previews" className="ProjectThumbnail__previews">
-        {otherImages.map((image, index) =>
-          this.renderPreview(image, index + 1),
-        )}
-      </div>,
-      <Lightbox
-        key="lightbox"
-        images={images}
-        currentImage={currentLightboxImageIndex}
-        isOpen={lightboxIsOpen}
-        showThumbnails={images.length > 1}
-        showImageCount={images.length > 1}
-        onClickNext={() => this.goToNextLightboxImage()}
-        onClickPrev={() => this.goToPreviousLightboxImage()}
-        onClickThumbnail={index => this.goToLightboxImage(index)}
-        onClose={() => this.closeLightbox()}
-      />,
-    ];
+    return (
+      <div className="ProjectThumbnail__preview-container">
+        {this.renderPreview(mainImage, 0)}
+        <div className="ProjectThumbnail__preview-row">
+          {otherImages.map((image, index) =>
+            this.renderPreview(image, index + 1),
+          )}
+        </div>
+        <Lightbox
+          images={images}
+          currentImage={currentLightboxImageIndex}
+          isOpen={lightboxIsOpen}
+          showThumbnails={images.length > 1}
+          showImageCount={images.length > 1}
+          onClickNext={() => this.goToNextLightboxImage()}
+          onClickPrev={() => this.goToPreviousLightboxImage()}
+          onClickThumbnail={index => this.goToLightboxImage(index)}
+          onClose={() => this.closeLightbox()}
+        />
+      </div>
+    );
   }
 
   render() {
