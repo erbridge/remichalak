@@ -40,7 +40,6 @@ export const topRoutes = [
     link: 'Shop',
     path: 'https://society6.com/remichalak',
     external: true,
-    newTab: true,
   },
   {
     name: 'contact',

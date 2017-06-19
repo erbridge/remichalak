@@ -9,7 +9,7 @@ const Footer = () =>
     <div className="Footer__content">
       <div className="Footer__credit">
         built by{' '}
-        <ExternalLink to="http://erbridge.co.uk/" newTab>erbridge</ExternalLink>
+        <ExternalLink to="http://erbridge.co.uk/">erbridge</ExternalLink>
       </div>
     </div>
   </div>;

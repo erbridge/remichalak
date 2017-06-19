@@ -18,7 +18,16 @@ const Header = () =>
       <div className="Header__nav">
         {topRoutes.map(
           (
-            { exact, external, link, name, navExact, newTab, path, strict },
+            {
+              exact,
+              external,
+              link,
+              name,
+              navExact,
+              path,
+              replaceCurrentTab,
+              strict,
+            },
             index,
           ) => {
             const LinkComponent = external ? ExternalLink : NavLink;
@@ -26,7 +35,7 @@ const Header = () =>
             const extraLinkProps = {};
 
             if (external) {
-              extraLinkProps.newTab = newTab;
+              extraLinkProps.replaceCurrentTab = replaceCurrentTab;
             } else {
               extraLinkProps.activeClassName =
                 'Header__nav-link__anchor--active';
