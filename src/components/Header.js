@@ -47,7 +47,11 @@ const Header = () =>
                   to={path}
                   {...extraLinkProps}
                 >
-                  <img className="Header__nav-link__anchor-image" src={assets[`/assets/header/${link}.png`]} alt={link} />
+                  <img
+                    className="Header__nav-link__anchor-image"
+                    src={assets[`/assets/header/${name}.png`]}
+                    alt={link}
+                  />
                 </LinkComponent>
               </div>
             );

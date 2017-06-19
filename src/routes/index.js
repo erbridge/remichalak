@@ -14,14 +14,14 @@ export const blogRoutes = posts.map(({ __content, slug, title }) => ({
 export const topRoutes = [
   {
     name: 'about',
-    link: 'about',
+    link: 'About',
     path: '/about',
     title: about.title,
     content: about.__content,
   },
   {
     name: 'blog',
-    link: 'blog',
+    link: 'Blog',
     path: '/blog',
     exact: true,
     title: blog.title,
@@ -30,21 +30,21 @@ export const topRoutes = [
   },
   {
     name: 'home',
-    link: 'home',
+    link: 'Home',
     path: '/',
     exact: true,
     navExact: true,
   },
   {
     name: 'shop',
-    link: 'shop',
+    link: 'Shop',
     path: 'https://society6.com/remichalak',
     external: true,
     newTab: true,
   },
   {
     name: 'contact',
-    link: 'contact',
+    link: 'Contact',
     path: '/contact',
     title: contact.title,
     content: contact.__content,

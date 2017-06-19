@@ -33,7 +33,7 @@ const App = () =>
           strict={route.strict}
           render={() =>
             <Helmet>
-              <title>{route.title ? `${route.title} | ` : ''}remichalak</title>
+              <title>{route.title ? `${route.title} | ` : ''}R. E. Michalak</title>
             </Helmet>}
         />,
       )}
