@@ -62,7 +62,6 @@
 
 .ProjectThumbnail__image {
   display: block;
-  max-width: none;
   object-fit: cover;
 }
 
