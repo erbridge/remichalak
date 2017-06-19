@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { matchPath } from 'react-router';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 
 import projects from './projects';
 import routes, { mainRoutes, topRoutes } from './routes';
@@ -33,7 +33,9 @@ const App = () =>
           strict={route.strict}
           render={() =>
             <Helmet>
-              <title>{route.title ? `${route.title} | ` : ''}R. E. Michalak</title>
+              <title>
+                {route.title ? `${route.title} | ` : ''}R. E. Michalak
+              </title>
             </Helmet>}
         />,
       )}
@@ -104,14 +106,20 @@ const App = () =>
               ),
             );
 
-            return (
-              <FadingSection
-                delayNextAnimation={isOveridden}
-                visible={!isOveridden}
-              >
-                <ProjectList projects={projects || []} />
-              </FadingSection>
-            );
+            return routes.find(route =>
+              matchPath(location.pathname, {
+                path: route.path,
+                exact: route.exact,
+                strict: route.strict,
+              }),
+            )
+              ? <FadingSection
+                  delayNextAnimation={isOveridden}
+                  visible={!isOveridden}
+                >
+                  <ProjectList projects={projects || []} />
+                </FadingSection>
+              : <Redirect to="/" />;
           }}
         />
       </Body>
