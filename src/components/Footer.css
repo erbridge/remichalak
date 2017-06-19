@@ -8,3 +8,15 @@
 .Footer__credit {
   text-align: right;
 }
+
+.Footer__credit-logo {
+  width: 54px;
+  vertical-align: bottom;
+  transition: opacity 250ms;
+}
+
+.Footer__credit-logo:active,
+.Footer__credit-logo:focus,
+.Footer__credit-logo:hover {
+  opacity: 0.7;
+}
