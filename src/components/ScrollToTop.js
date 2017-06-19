@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import ScrollToTopButton from 'react-scroll-up';
 
+import arrow from '../assets/misc/arrow.png';
+
 import './ScrollToTop.css';
 
 class ScrollToTop extends Component {
@@ -29,14 +31,13 @@ class ScrollToTop extends Component {
         showUnder={200}
         style={{
           position: 'fixed',
-          bottom: 10,
-          right: '50%',
+          bottom: 15,
+          right: 15,
           cursor: 'pointer',
-          transform: 'translateX(50%)',
           transitionDuration: '250ms',
         }}
       >
-        <div className="ScrollToTop">↑</div>
+        <img className="ScrollToTop" src={arrow} alt="Scroll to Top" />
       </ScrollToTopButton>
     );
   }

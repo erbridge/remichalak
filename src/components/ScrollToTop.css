@@ -1,7 +1,7 @@
 .ScrollToTop {
+  display: block;
   border-radius: 3px;
-  padding: 5px;
-  background-color: rgba(34, 34, 34, 0.8);
-  font-size: 48px;
+  padding: 8px;
+  background-color: rgba(40, 40, 40, 0.8);
   user-select: none;
 }

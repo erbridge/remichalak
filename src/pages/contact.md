@@ -2,6 +2,9 @@
 title: Contact
 ---
 
-# Contact
+## Contact
 
-[Email](mailto:michalakbecky@gmail.com) me!
+Currently open for commissions and freelance work.
+
+Twitter: [@_thatgumyoulike](https://twitter.com/_thatgumyoulike)<br>
+Email: [michalakbecky@gmail.com](mailto:michalakbecky@gmail.com)

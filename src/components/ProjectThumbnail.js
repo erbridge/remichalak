@@ -131,7 +131,7 @@ class ProjectThumbnail extends Component {
     return (
       <div className="ProjectThumbnail">
         {this.renderImages()}
-        <div className="ProjectThumbnail__title">{title}</div>
+        <h3 className="ProjectThumbnail__title">{title}</h3>
       </div>
     );
   }
