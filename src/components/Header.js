@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import assets from '../assets';
 import { topRoutes } from '../routes';
 
 import ExternalLink from './ExternalLink';
@@ -11,7 +12,9 @@ import './Header.css';
 const Header = () =>
   <div className="Header">
     <div className="Header__content">
-      <h1>remichalak</h1>
+      <h1 className="Header__title">
+        <img src={assets['/assets/header/title.png']} alt="R. E. Michalak" />
+      </h1>
       <div className="Header__nav">
         {topRoutes.map(
           (
@@ -44,7 +47,7 @@ const Header = () =>
                   to={path}
                   {...extraLinkProps}
                 >
-                  {link}
+                  <img className="Header__nav-link__anchor-image" src={assets[`/assets/header/${link}.png`]} alt={link} />
                 </LinkComponent>
               </div>
             );
