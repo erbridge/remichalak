@@ -1,5 +1,5 @@
 import about from '../pages/about.md';
-import blog from '../pages/blog.md';
+// import blog from '../pages/blog.md';
 import contact from '../pages/contact.md';
 
 import posts from '../posts';
@@ -19,15 +19,15 @@ export const topRoutes = [
     title: about.title,
     content: about.__content,
   },
-  {
-    name: 'blog',
-    link: 'Blog',
-    path: '/blog',
-    exact: true,
-    title: blog.title,
-    content: blog.__content,
-    routes: blogRoutes,
-  },
+  // {
+  //   name: 'blog',
+  //   link: 'Blog',
+  //   path: '/blog',
+  //   exact: true,
+  //   title: blog.title,
+  //   content: blog.__content,
+  //   routes: blogRoutes,
+  // },
   {
     name: 'home',
     link: 'Home',
