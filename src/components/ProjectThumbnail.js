@@ -1,8 +1,9 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-
 import Lightbox from 'react-images';
+
+import ImageWithPlaceholder from './ImageWithPlaceholder';
 
 import './ProjectThumbnail.css';
 
@@ -78,7 +79,15 @@ class ProjectThumbnail extends Component {
         })}
         onClick={() => this.openLightbox(index)}
       >
-        <img className="ProjectThumbnail__image" src={src} alt={alt} />
+        <ImageWithPlaceholder
+          className="ProjectThumbnail__image-container"
+          src={src}
+          alt={alt}
+          extraImgProps={{ className: 'ProjectThumbnail__image' }}
+          extraPlaceholderProps={{
+            className: 'ProjectThumbnail__image-placeholder',
+          }}
+        />
       </div>
     );
   }

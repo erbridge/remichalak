@@ -27,8 +27,8 @@ class ViewableImage extends Component {
     const { lightboxIsOpen } = this.state;
 
     return (
-      <span className="ViewableImage">
-        <img src={src} alt={alt} onClick={() => this.openLightbox()} />
+      <span className="ViewableImage" onClick={() => this.openLightbox()}>
+        <img src={src} alt={alt} />
         <Lightbox
           images={[{ src }]}
           isOpen={lightboxIsOpen}

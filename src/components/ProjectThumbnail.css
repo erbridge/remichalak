@@ -38,11 +38,8 @@
 }
 
 .ProjectThumbnail__preview {
-  display: flex;
   flex: 1;
-  height: 100%;
   overflow: hidden;
-  justify-content: center;
   cursor: pointer;
 }
 
@@ -57,10 +54,21 @@
   overflow: hidden;
 }
 
+.ProjectThumbnail__image-container {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
 .ProjectThumbnail__image {
   display: block;
   max-width: none;
   object-fit: cover;
+}
+
+.ProjectThumbnail__image-placeholder {
+  width: 100%;
+  height: 100%;
 }
 
 .ProjectThumbnail__title {
