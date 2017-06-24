@@ -15,5 +15,7 @@ require('whatwg-fetch');
 // It will use the native implementation if it's present and isn't buggy.
 Object.assign = require('object-assign');
 
-// TODO: Check that this works in IE.
+// TODO: Check that this works in IE and Edge.
 require('object-fit-images')();
+require('array.prototype.find').shim();
+require('string.prototype.startswith');
