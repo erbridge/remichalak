@@ -20,18 +20,3 @@
   flex-shrink: 1;
   overflow: auto;
 }
-
-.ExpandingSection__footer {
-  display: flex;
-  padding-top: 5px;
-}
-
-.ExpandingSection__spacer {
-  flex: 1;
-}
-
-.ExpandingSection__close {
-  font-size: 32px;
-  text-decoration: none;
-  user-select: none;
-}

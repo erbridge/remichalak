@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import './ExpandingSection.css';
 
@@ -33,13 +32,7 @@ export class ExpandingSection extends Component {
           'ExpandingSection--expanded--delayed': expand && delayAnimation,
         })}
       >
-        <div className="ExpandingSection__content">
-          {children}
-        </div>
-        <div className="ExpandingSection__footer">
-          <div className="ExpandingSection__spacer" />
-          <Link className="ExpandingSection__close" to="/">×</Link>
-        </div>
+        <div className="ExpandingSection__content">{children}</div>
       </div>
     );
   }

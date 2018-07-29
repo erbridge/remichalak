@@ -15,7 +15,9 @@ export const topRoutes = [
   {
     name: 'about',
     link: 'About',
-    path: '/about',
+    path: '/',
+    exact: true,
+    navExact: true,
     title: about.title,
     content: about.__content,
   },
@@ -28,13 +30,6 @@ export const topRoutes = [
   //   content: blog.__content,
   //   routes: blogRoutes,
   // },
-  {
-    name: 'home',
-    link: 'Home',
-    path: '/',
-    exact: true,
-    navExact: true,
-  },
   {
     name: 'shop',
     link: 'Shop',
