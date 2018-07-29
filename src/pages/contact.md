@@ -6,5 +6,5 @@ title: Contact
 
 Currently open for commissions and freelance work.
 
-Twitter: [@_thatgumyoulike](https://twitter.com/_thatgumyoulike)<br>
-Email: [michalakbecky@gmail.com](mailto:michalakbecky@gmail.com)
+Twitter: [@r_michalak](https://twitter.com/r_michalak)<br> Email:
+[michalakbecky@gmail.com](mailto:michalakbecky@gmail.com)
