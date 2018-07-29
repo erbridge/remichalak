@@ -13,6 +13,7 @@ import FadingSection from './components/FadingSection';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import IndexPage from './components/IndexPage';
+import MarkdownColumnPage from './components/MarkdownColumnPage';
 import MarkdownPage from './components/MarkdownPage';
 import ProjectList from './components/ProjectList';
 
@@ -64,6 +65,9 @@ const App = () => (
                 expand={Boolean(match)}
               >
                 {route.content && <MarkdownPage content={route.content} />}
+                {route.columnContent && (
+                  <MarkdownColumnPage content={route.columnContent} />
+                )}
                 {route.routes &&
                   route.routes.length && <IndexPage routes={route.routes} />}
               </ExpandingSection>

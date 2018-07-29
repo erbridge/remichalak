@@ -1,4 +1,5 @@
 import about from '../pages/about.md';
+import aboutColumn1 from '../pages/about-column-1.md';
 // import blog from '../pages/blog.md';
 import contact from '../pages/contact.md';
 
@@ -20,6 +21,7 @@ export const topRoutes = [
     navExact: true,
     title: about.title,
     content: about.__content,
+    columnContent: [aboutColumn1.__content],
   },
   // {
   //   name: 'blog',

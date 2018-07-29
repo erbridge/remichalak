@@ -1,0 +1,23 @@
+.MarkdownColumnPage {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.MarkdownColumnPage__column {
+  flex: 1;
+}
+
+.MarkdownColumnPage__spacer {
+  padding: 10px;
+}
+
+@media (max-width: 800px) {
+  .MarkdownColumnPage {
+    flex-direction: column;
+  }
+
+  .MarkdownColumnPage__spacer {
+    padding: 0;
+  }
+}

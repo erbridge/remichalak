@@ -53,6 +53,9 @@ const processingInstructions = [
   },
 ];
 
+export const parseMarkdown = content =>
+  htmlParser.parseWithInstructions(content, () => true, processingInstructions);
+
 class MarkdownPage extends Component {
   static propTypes = {
     content: PropTypes.string.isRequired,
@@ -62,15 +65,7 @@ class MarkdownPage extends Component {
     const { content } = this.props;
 
     // TODO: Only parse when the content changes.
-    return (
-      <div className="MarkdownPage">
-        {htmlParser.parseWithInstructions(
-          content,
-          () => true,
-          processingInstructions,
-        )}
-      </div>
-    );
+    return <div className="MarkdownPage">{parseMarkdown(content)}</div>;
   }
 }
 
