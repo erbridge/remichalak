@@ -1,3 +1,27 @@
 .MarkdownPage {
   width: 100%;
 }
+
+.MarkdownPage__columns {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.MarkdownPage__column {
+  flex: 1;
+}
+
+.MarkdownPage__spacer {
+  padding: 10px;
+}
+
+@media (max-width: 800px) {
+  .MarkdownPage__columns {
+    flex-direction: column;
+  }
+
+  .MarkdownPage__spacer {
+    padding: 0;
+  }
+}

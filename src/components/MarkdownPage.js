@@ -58,14 +58,45 @@ export const parseMarkdown = content =>
 
 class MarkdownPage extends Component {
   static propTypes = {
-    content: PropTypes.string.isRequired,
+    content: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.string),
+      PropTypes.arrayOf(
+        PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.arrayOf(PropTypes.string),
+        ]),
+      ),
+    ]).isRequired,
   };
+
+  parseContent(content) {
+    if (!Array.isArray(content)) {
+      return parseMarkdown(content);
+    }
+
+    return content.map((row, i) => {
+      if (!Array.isArray(row)) {
+        return parseMarkdown(row);
+      }
+
+      return (
+        <div key={i} className="MarkdownPage__columns">
+          {row.map((column, j) => (
+            <div key={j} className="MarkdownPage__column">
+              {parseMarkdown(column)}
+            </div>
+          ))}
+        </div>
+      );
+    });
+  }
 
   render() {
     const { content } = this.props;
 
     // TODO: Only parse when the content changes.
-    return <div className="MarkdownPage">{parseMarkdown(content)}</div>;
+    return <div className="MarkdownPage">{this.parseContent(content)}</div>;
   }
 }
 
