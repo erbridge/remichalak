@@ -20,7 +20,7 @@ export const topRoutes = [
     exact: true,
     navExact: true,
     title: about_1.title,
-    content: [about_1.__content, about_2_1.__content],
+    content: [about_1.__content, [about_2_1.__content]],
   },
   // {
   //   name: 'blog',

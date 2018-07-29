@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.MarkdownPage__part :last-child {
+  margin-bottom: 0;
+}
+
 .MarkdownPage__columns {
   display: flex;
   flex-wrap: wrap;
