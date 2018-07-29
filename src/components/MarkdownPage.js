@@ -16,14 +16,13 @@ const processNodeDefinitions = new ProcessNodeDefinitions(React);
 const processingInstructions = [
   {
     shouldProcessNode(node) {
-      return node.type && node.type === 'tag' && node.name && node.name === 'a';
+      return node.type === 'tag' && node.name === 'a';
     },
     processNode(node, children, index) {
-      const LinkComponent = node.attribs &&
-        node.attribs.href &&
-        node.attribs.href.startsWith('/')
-        ? Link
-        : ExternalLink;
+      const LinkComponent =
+        node.attribs && node.attribs.href && node.attribs.href.startsWith('/')
+          ? Link
+          : ExternalLink;
 
       return (
         <LinkComponent key={index} to={node.attribs.href}>
@@ -34,9 +33,7 @@ const processingInstructions = [
   },
   {
     shouldProcessNode(node) {
-      return (
-        node.type && node.type === 'tag' && node.name && node.name === 'img'
-      );
+      return node.type === 'tag' && node.name === 'img';
     },
     processNode(node, children, index) {
       return (

@@ -22,32 +22,33 @@ const topRoutesWithContentOrSubroutes = topRoutes.filter(
   ({ content, routes }) => content || (routes && routes.length),
 );
 
-const App = () =>
+const App = () => (
   <Router>
     <div className="App">
-      {routes.map((route, index) =>
+      {routes.map((route, index) => (
         <Route
           key={index}
           path={route.path}
           exact={route.exact}
           strict={route.strict}
-          render={() =>
+          render={() => (
             <Helmet>
               <title>
                 {route.title ? `${route.title} | ` : ''}R. E. Michalak
               </title>
-            </Helmet>}
-        />,
-      )}
+            </Helmet>
+          )}
+        />
+      ))}
       <Header />
       <Body>
-        {topRoutesWithContentOrSubroutes.map((route, index) =>
+        {topRoutesWithContentOrSubroutes.map((route, index) => (
           <Route
             key={index}
             path={route.path}
             exact={route.exact}
             strict={route.strict}
-            children={({ location, match }) =>
+            children={({ location, match }) => (
               <ExpandingSection
                 delayNextAnimation={Boolean(
                   [...topRoutesWithContentOrSubroutes, ...mainRoutes].find(
@@ -64,18 +65,18 @@ const App = () =>
               >
                 {route.content && <MarkdownPage content={route.content} />}
                 {route.routes &&
-                  route.routes.length &&
-                  <IndexPage routes={route.routes} />}
-              </ExpandingSection>}
-          />,
-        )}
-        {mainRoutes.map((route, index) =>
+                  route.routes.length && <IndexPage routes={route.routes} />}
+              </ExpandingSection>
+            )}
+          />
+        ))}
+        {mainRoutes.map((route, index) => (
           <Route
             key={index}
             path={route.path}
             exact={route.exact}
             strict={route.strict}
-            children={({ location, match }) =>
+            children={({ location, match }) => (
               <FadingSection
                 delayNextAnimation={Boolean(
                   routes.find(
@@ -91,9 +92,10 @@ const App = () =>
                 visible={Boolean(match)}
               >
                 <MarkdownPage content={route.content} />
-              </FadingSection>}
-          />,
-        )}
+              </FadingSection>
+            )}
+          />
+        ))}
         <Route
           children={({ location, match }) => {
             const isOveridden = Boolean(
@@ -112,20 +114,23 @@ const App = () =>
                 exact: route.exact,
                 strict: route.strict,
               }),
-            )
-              ? <FadingSection
-                  delayNextAnimation={isOveridden}
-                  visible={!isOveridden}
-                >
-                  <ProjectList projects={projects || []} />
-                </FadingSection>
-              : <Redirect to="/" />;
+            ) ? (
+              <FadingSection
+                delayNextAnimation={isOveridden}
+                visible={!isOveridden}
+              >
+                <ProjectList projects={projects || []} />
+              </FadingSection>
+            ) : (
+              <Redirect to="/" />
+            );
           }}
         />
       </Body>
       <Footer />
       <ScrollToTop />
     </div>
-  </Router>;
+  </Router>
+);
 
 export default App;
