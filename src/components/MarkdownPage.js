@@ -78,11 +78,14 @@ class MarkdownPage extends Component {
     return content.map((row, i) => {
       const part = Array.isArray(row) ? (
         <div className="MarkdownPage__columns">
-          {row.map((column, j) => (
+          {row.map((column, j) => [
             <div key={j} className="MarkdownPage__column">
               {parseMarkdown(column)}
-            </div>
-          ))}
+            </div>,
+            j !== row.length - 1 && (
+              <div key={`${j}-spacer`} className="MarkdownPage__spacer" />
+            ),
+          ])}
         </div>
       ) : (
         parseMarkdown(row)
