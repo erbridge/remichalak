@@ -1,5 +1,6 @@
 import about_1 from '../pages/about/1.md';
 import about_2_1 from '../pages/about/2-1.md';
+import about_2_2 from '../pages/about/2-2.md';
 // import blog from '../pages/blog.md';
 import contact from '../pages/contact.md';
 
@@ -20,7 +21,7 @@ export const topRoutes = [
     exact: true,
     navExact: true,
     title: about_1.title,
-    content: [about_1.__content, [about_2_1.__content]],
+    content: [about_1.__content, [about_2_1.__content, about_2_2.__content]],
   },
   // {
   //   name: 'blog',
