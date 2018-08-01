@@ -6,5 +6,5 @@ title: Contact
 
 Currently open for commissions and freelance work.
 
-Twitter: [@r_michalak](https://twitter.com/r_michalak)<br> Email:
-[michalakbecky@gmail.com](mailto:michalakbecky@gmail.com)
+Twitter: [@R_Michalak](https://twitter.com/R_Michalak)<br>
+Email: [michalakbecky@gmail.com](mailto:michalakbecky@gmail.com)
