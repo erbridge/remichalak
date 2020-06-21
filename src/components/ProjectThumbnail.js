@@ -1,10 +1,8 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import Lightbox from 'react-images';
-
+import Carousel, { Modal, ModalGateway } from 'react-images';
 import ImageWithPlaceholder from './ImageWithPlaceholder';
-
 import './ProjectThumbnail.css';
 
 class ProjectThumbnail extends Component {
@@ -20,54 +18,54 @@ class ProjectThumbnail extends Component {
   };
 
   state = {
-    currentLightboxImageIndex: 0,
-    lightboxIsOpen: false,
+    currentCarouselImageIndex: 0,
+    carouselIsOpen: false,
   };
 
-  openLightbox(index) {
-    this.setState({ currentLightboxImageIndex: index, lightboxIsOpen: true });
+  openCarousel(index) {
+    this.setState({ currentCarouselImageIndex: index, carouselIsOpen: true });
   }
 
-  closeLightbox() {
-    this.setState({ currentLightboxImageIndex: 0, lightboxIsOpen: false });
+  closeCarousel() {
+    this.setState({ currentCarouselImageIndex: 0, carouselIsOpen: false });
   }
 
-  goToNextLightboxImage() {
+  goToNextCarouselImage() {
     const { images } = this.props;
-    const { currentLightboxImageIndex, lightboxIsOpen } = this.state;
+    const { currentCarouselImageIndex, carouselIsOpen } = this.state;
 
-    if (!lightboxIsOpen) {
+    if (!carouselIsOpen) {
       return;
     }
 
     this.setState({
-      currentLightboxImageIndex:
-        (currentLightboxImageIndex + 1) % images.length,
+      currentCarouselImageIndex:
+        (currentCarouselImageIndex + 1) % images.length,
     });
   }
 
-  goToPreviousLightboxImage() {
+  goToPreviousCarouselImage() {
     const { images } = this.props;
-    const { currentLightboxImageIndex, lightboxIsOpen } = this.state;
+    const { currentCarouselImageIndex, carouselIsOpen } = this.state;
 
-    if (!lightboxIsOpen) {
+    if (!carouselIsOpen) {
       return;
     }
 
     this.setState({
-      currentLightboxImageIndex:
-        (images.length + currentLightboxImageIndex - 1) % images.length,
+      currentCarouselImageIndex:
+        (images.length + currentCarouselImageIndex - 1) % images.length,
     });
   }
 
-  goToLightboxImage(index) {
-    const { lightboxIsOpen } = this.state;
+  goToCarouselImage(index) {
+    const { carouselIsOpen } = this.state;
 
-    if (!lightboxIsOpen) {
+    if (!carouselIsOpen) {
       return;
     }
 
-    this.setState({ currentLightboxImageIndex: index });
+    this.setState({ currentCarouselImageIndex: index });
   }
 
   renderPreview({ alt, src }, index) {
@@ -77,7 +75,7 @@ class ProjectThumbnail extends Component {
         className={classnames('ProjectThumbnail__preview', {
           'ProjectThumbnail__preview--main': !index,
         })}
-        onClick={() => this.openLightbox(index)}
+        onClick={() => this.openCarousel(index)}
       >
         <ImageWithPlaceholder
           className="ProjectThumbnail__image-container"
@@ -94,7 +92,7 @@ class ProjectThumbnail extends Component {
 
   renderImages() {
     const { images } = this.props;
-    const { currentLightboxImageIndex, lightboxIsOpen } = this.state;
+    const { currentCarouselImageIndex, carouselIsOpen } = this.state;
 
     if (!images.length) {
       return null;
@@ -110,17 +108,16 @@ class ProjectThumbnail extends Component {
             this.renderPreview(image, index + 1),
           )}
         </div>
-        <Lightbox
-          images={images}
-          currentImage={currentLightboxImageIndex}
-          isOpen={lightboxIsOpen}
-          showThumbnails={images.length > 1}
-          showImageCount={images.length > 1}
-          onClickNext={() => this.goToNextLightboxImage()}
-          onClickPrev={() => this.goToPreviousLightboxImage()}
-          onClickThumbnail={index => this.goToLightboxImage(index)}
-          onClose={() => this.closeLightbox()}
-        />
+        <ModalGateway>
+          {carouselIsOpen && (
+            <Modal onClose={() => this.closeCarousel()}>
+              <Carousel
+                views={images}
+                currentIndex={currentCarouselImageIndex}
+              />
+            </Modal>
+          )}
+        </ModalGateway>
       </div>
     );
   }

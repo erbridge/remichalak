@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<HelmetProvider
+  context={Object {}}
+>
+  <Route
+    exact={true}
+    key="about"
+    path="/"
+  >
+    <Helmet
+      defer={true}
+      encodeSpecialCharacters={true}
+    >
+      <title>
+        R. E. Michalak
+      </title>
+    </Helmet>
+  </Route>
+  <Route
+    key="shop"
+    path="https://society6.com/remichalak"
+  >
+    <Helmet
+      defer={true}
+      encodeSpecialCharacters={true}
+    >
+      <title>
+        R. E. Michalak
+      </title>
+    </Helmet>
+  </Route>
+  <Route
+    key="contact"
+    path="/contact"
+  >
+    <Helmet
+      defer={true}
+      encodeSpecialCharacters={true}
+    >
+      <title>
+        R. E. Michalak
+      </title>
+    </Helmet>
+  </Route>
+</HelmetProvider>
+`;

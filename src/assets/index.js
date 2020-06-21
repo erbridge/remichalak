@@ -6,7 +6,7 @@ const assetsContext = require.context(
 
 const assets = {};
 
-assetsContext.keys().forEach(path => {
+assetsContext.keys().forEach((path) => {
   assets[path.replace(/^.\//, '/assets/')] = assetsContext(path);
 });
 

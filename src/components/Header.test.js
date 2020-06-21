@@ -5,5 +5,9 @@ import { MemoryRouter } from 'react-router-dom';
 import Header from './Header';
 
 it('mounts without crashing', () => {
-  mount(<MemoryRouter><Header /></MemoryRouter>);
+  mount(
+    <MemoryRouter>
+      <Header />
+    </MemoryRouter>,
+  );
 });

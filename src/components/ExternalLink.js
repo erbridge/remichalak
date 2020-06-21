@@ -5,19 +5,18 @@ class ExternalLink extends Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    replaceCurrentTab: PropTypes.bool,
     to: PropTypes.string.isRequired,
   };
 
   render() {
-    const { children, className, replaceCurrentTab, to } = this.props;
+    const { children, className, to } = this.props;
 
     return (
       <a
         className={className}
         href={to}
-        target={!replaceCurrentTab && '_blank'}
-        rel={!replaceCurrentTab && 'noopener noreferrer'}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         {children}
       </a>

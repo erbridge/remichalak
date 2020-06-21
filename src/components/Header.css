@@ -40,9 +40,12 @@
   transition: opacity 250ms;
 }
 
-.Header__nav-link__anchor:not(.Header__nav-link__anchor--active):active .Header__nav-link__anchor-image,
-.Header__nav-link__anchor:not(.Header__nav-link__anchor--active):focus .Header__nav-link__anchor-image,
-.Header__nav-link__anchor:not(.Header__nav-link__anchor--active):hover .Header__nav-link__anchor-image {
+.Header__nav-link__anchor:not(.Header__nav-link__anchor--active):active
+  .Header__nav-link__anchor-image,
+.Header__nav-link__anchor:not(.Header__nav-link__anchor--active):focus
+  .Header__nav-link__anchor-image,
+.Header__nav-link__anchor:not(.Header__nav-link__anchor--active):hover
+  .Header__nav-link__anchor-image {
   opacity: 0.7;
 }
 

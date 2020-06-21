@@ -25,7 +25,7 @@ class ScrollToTop extends Component {
   render() {
     return (
       <ScrollToTopButton
-        ref={node => {
+        ref={(node) => {
           this.buttonNode = node;
         }}
         showUnder={200}

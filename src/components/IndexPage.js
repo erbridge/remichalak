@@ -1,17 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import routePropType from '../prop-types/routePropType';
 
 class IndexPage extends Component {
   static propTypes = {
-    routes: PropTypes.arrayOf(
-      PropTypes.shape({
-        exact: PropTypes.bool,
-        path: PropTypes.string.isRequired,
-        strict: PropTypes.bool,
-        title: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
+    routes: PropTypes.arrayOf(routePropType).isRequired,
   };
 
   render() {
@@ -19,11 +13,13 @@ class IndexPage extends Component {
 
     return (
       <div className="IndexPage">
-        {routes.map(({ exact, path, strict, title }, index) =>
+        {routes.map(({ exact, path, title }, index) => (
           <div key={index} className="IndexPage__route">
-            <NavLink to={path} exact={exact} strict={strict}>{title}</NavLink>
-          </div>,
-        )}
+            <NavLink to={path} exact={exact}>
+              {title}
+            </NavLink>
+          </div>
+        ))}
       </div>
     );
   }

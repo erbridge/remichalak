@@ -6,7 +6,7 @@ import ExternalLink from './ExternalLink';
 
 import './Footer.css';
 
-const Footer = () =>
+const Footer = () => (
   <div className="Footer">
     <div className="Footer__content">
       <div className="Footer__credit">
@@ -20,6 +20,7 @@ const Footer = () =>
         </ExternalLink>
       </div>
     </div>
-  </div>;
+  </div>
+);
 
 export default Footer;

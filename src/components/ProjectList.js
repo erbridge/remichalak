@@ -26,9 +26,9 @@ class ProjectList extends Component {
 
     return (
       <div className="ProjectList">
-        {projects.map(({ images, path, title }, index) =>
-          <ProjectThumbnail key={index} images={images || []} title={title} />,
-        )}
+        {projects.map(({ images, path, title }, index) => (
+          <ProjectThumbnail key={index} images={images || []} title={title} />
+        ))}
       </div>
     );
   }

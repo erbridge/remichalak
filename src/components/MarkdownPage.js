@@ -1,78 +1,29 @@
-import { Parser, ProcessNodeDefinitions } from 'html-to-react';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
-import assets from '../assets';
-
+import { routeShape } from '../prop-types/routePropType';
 import ExternalLink from './ExternalLink';
-import ViewableImage from './ViewableImage';
-
 import './MarkdownPage.css';
 
-const htmlParser = new Parser();
+const markdownComponents = {
+  a({ href, children }) {
+    const LinkComponent = href && href.startsWith('/') ? Link : ExternalLink;
 
-const processNodeDefinitions = new ProcessNodeDefinitions(React);
-const processingInstructions = [
-  {
-    shouldProcessNode(node) {
-      return node.type === 'tag' && node.name === 'a';
-    },
-    processNode(node, children, index) {
-      const LinkComponent =
-        node.attribs && node.attribs.href && node.attribs.href.startsWith('/')
-          ? Link
-          : ExternalLink;
-
-      return (
-        <LinkComponent key={index} to={node.attribs.href}>
-          {children}
-        </LinkComponent>
-      );
-    },
+    return <LinkComponent to={href}>{children}</LinkComponent>;
   },
-  {
-    shouldProcessNode(node) {
-      return node.type === 'tag' && node.name === 'img';
-    },
-    processNode(node, children, index) {
-      return (
-        <ViewableImage
-          key={index}
-          src={assets[node.attribs.src] || node.attribs.src}
-          alt={node.attribs.alt || ''}
-        />
-      );
-    },
-  },
-  {
-    shouldProcessNode(node) {
-      return true;
-    },
-    processNode: processNodeDefinitions.processDefaultNode,
-  },
-];
-
-export const parseMarkdown = content =>
-  htmlParser.parseWithInstructions(content, () => true, processingInstructions);
+};
 
 class MarkdownPage extends Component {
-  static propTypes = {
-    content: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.arrayOf(PropTypes.string),
-      PropTypes.arrayOf(
-        PropTypes.oneOfType([
-          PropTypes.string,
-          PropTypes.arrayOf(PropTypes.string),
-        ]),
-      ),
-    ]).isRequired,
+  static propTypes = routeShape;
+
+  state = {
+    loadedStyles: [],
   };
 
-  parseContent(content) {
+  renderContent() {
+    const { content } = this.props;
+
     if (!Array.isArray(content)) {
-      return parseMarkdown(content);
+      return content({ components: markdownComponents });
     }
 
     return content.map((row, i) => {
@@ -80,7 +31,7 @@ class MarkdownPage extends Component {
         <div className="MarkdownPage__columns">
           {row.map((column, j) => [
             <div key={j} className="MarkdownPage__column">
-              {parseMarkdown(column)}
+              {column({ components: markdownComponents })}
             </div>,
             j !== row.length - 1 && (
               <div key={`${j}-spacer`} className="MarkdownPage__spacer" />
@@ -88,7 +39,7 @@ class MarkdownPage extends Component {
           ])}
         </div>
       ) : (
-        parseMarkdown(row)
+        row({ components: markdownComponents })
       );
 
       return (
@@ -100,10 +51,7 @@ class MarkdownPage extends Component {
   }
 
   render() {
-    const { content } = this.props;
-
-    // TODO: Only parse when the content changes.
-    return <div className="MarkdownPage">{this.parseContent(content)}</div>;
+    return <div className="MarkdownPage">{this.renderContent()}</div>;
   }
 }
 

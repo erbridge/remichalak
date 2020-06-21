@@ -4,10 +4,7 @@
   visibility: collapse;
   max-height: 0;
   padding: 0;
-  transition: max-height 250ms,
-    padding 250ms,
-    opacity 250ms,
-    visibility 250ms;
+  transition: max-height 250ms, padding 250ms, opacity 250ms, visibility 250ms;
 }
 
 .FadingSection--visible {

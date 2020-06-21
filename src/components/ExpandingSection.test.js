@@ -5,5 +5,9 @@ import { MemoryRouter } from 'react-router-dom';
 import ExpandingSection from './ExpandingSection';
 
 it('mounts without crashing', () => {
-  mount(<MemoryRouter><ExpandingSection /></MemoryRouter>);
+  mount(
+    <MemoryRouter>
+      <ExpandingSection />
+    </MemoryRouter>,
+  );
 });

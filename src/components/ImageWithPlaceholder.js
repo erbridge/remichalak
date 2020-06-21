@@ -1,8 +1,7 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import ImageWithPlaceholderLoader from 'react-imageloader';
-
+import ImageLoader from 'react-load-image';
 import './ImageWithPlaceholder.css';
 
 class ImageWithPlaceholder extends Component {
@@ -32,16 +31,16 @@ class ImageWithPlaceholder extends Component {
     const { alt, className, extraImgProps, onError, onLoad, src } = this.props;
 
     return (
-      <ImageWithPlaceholderLoader
+      <ImageLoader
         className={classnames('ImageWithPlaceholder', className)}
         src={src}
-        imgProps={{ alt, ...extraImgProps }}
-        preloader={() => this.renderPlaceholder()}
         onError={onError}
         onLoad={onLoad}
       >
+        <img alt={alt} {...extraImgProps} />
         {this.renderPlaceholder()}
-      </ImageWithPlaceholderLoader>
+        {this.renderPlaceholder()}
+      </ImageLoader>
     );
   }
 }

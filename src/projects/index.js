@@ -6,7 +6,7 @@ const projects = projectsContext
   .keys()
   .map(projectsContext)
   .map(({ images, title }) => ({
-    images: images.map(image => {
+    images: images.map((image) => {
       let alt;
       let caption = '';
       let src = image;

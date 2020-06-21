@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-
 import './FadingSection.css';
 
 export class FadingSection extends Component {
@@ -15,7 +14,7 @@ export class FadingSection extends Component {
     delayAnimation: false,
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.visible !== this.props.visible) {
       this.setState({ delayAnimation: this.props.delayNextAnimation });
     }
@@ -32,9 +31,7 @@ export class FadingSection extends Component {
           'FadingSection--visible--delayed': visible && delayAnimation,
         })}
       >
-        <div className="FadingSection__content">
-          {children}
-        </div>
+        <div className="FadingSection__content">{children}</div>
       </div>
     );
   }

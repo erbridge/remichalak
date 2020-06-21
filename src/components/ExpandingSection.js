@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-
 import './ExpandingSection.css';
 
 export class ExpandingSection extends Component {
@@ -15,7 +14,7 @@ export class ExpandingSection extends Component {
     delayAnimation: false,
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.expand !== this.props.expand) {
       this.setState({ delayAnimation: this.props.delayNextAnimation });
     }
